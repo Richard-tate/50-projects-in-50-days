@@ -1,0 +1,124 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #5290f9;
+}
+
+.circle {
+    width: 150px;
+    height: 150px;
+    background: #fff;
+    border-radius:50%;
+    position: fixed;
+    top:-70px;
+    left:-70px;
+    z-index: 20;
+    transition: transform ease .6s ;
+  }
+  .circle button {
+    position: absolute;
+    top: 35%;
+    left: 55%;
+    height: 100px;
+    background-color: transparent;
+    border: 0;
+    font-size: 26px;
+    color:#5290f9;
+    cursor: pointer;
+}
+.circle button:focus{
+    outline: none;
+}
+
+.circle button#open{
+    left:55%;
+}
+.circle button#close{
+    top: 60%;
+    left: 65%;
+    transform: rotate(90deg);
+    transform-origin: top left;
+}
+
+.circle.show{
+    transform: rotate(-90deg);
+}
+nav{
+    background-color: #fff;
+    height: 80px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: width linear 0.8s, left linear 0.6s, height ease .5s;
+    position: fixed;
+    left: -100%;
+}
+nav.active{
+    width: 100%;
+    left: 0;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 0;
+    transition: width linear 0.6s;
+    justify-content: space-evenly;
+}
+nav.active ul{
+    width: 100%;
+}
+nav ul li{
+    transform: rotateY(0deg);
+    opacity: 0;
+    transition: transform 0.8s linear, opacity 0.2s linear;
+}
+nav.active ul li {
+    opacity: 1;
+    transform: rotateY(360deg);
+    transition: transform 1s linear, opacity 1.4s linear;
+}
+nav.active ul li i {
+    color: #5290f9;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+nav ul a{
+    position: relative;
+    color: #5290f9;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+
+
+@media(max-width:900px){
+    nav.active{
+        height: 200px;
+        transition: height ease .5s;
+    }
+}
+@media(max-width:400px){
+    nav.active ul {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+        align-items: flex-start;
+    }
+    nav.active ul li{
+        display: flex;
+        justify-content: center;
+        margin: .75rem 0;
+    }
+}
